@@ -1,0 +1,408 @@
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #333;
+    --input-bg: #fff;
+    --input-border: #ccc;
+    --button-bg: #007bff;
+    --button-color: #fff;
+    --button-hover-bg: #0056b3;
+    --link-color: #007bff;
+    --container-bg: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --redes-bg: #222;
+    --redes-border: #444;
+    --redes-panel-bg: #f0f0f0;
+    --redes-panel-hover-bg: #e0e0e0;
+    --redes-icon-color: #555;
+    --redes-link-panel-color: #007bff;
+    --session-button-bg: #dc3545;
+    --session-button-color: #fff;
+    --session-button-hover-bg: #c82333;
+    --theme-icon-color: #333;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 40px;
+    width: 95%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-container {
+    composes: container;
+    max-width: 450px;
+    border-radius: 10px;
+}
+
+.redes-container {
+    composes: container;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    max-width: 1200px;
+    border-radius: 10px;
+}
+
+.profile-info {
+    margin-bottom: 40px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.profile-info h1 {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.profile-info .description {
+    color: var(--text-color);
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.redes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 20px;
+    margin-bottom: 30px;
+    align-items: stretch;
+}
+
+.redes-grid .red-item {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.redes-grid .red-panel {
+    background-color: var(--redes-panel-bg);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    color: var(--text-color);
+    flex-grow: 1;
+    min-height: 180px;
+    border: 1px solid var(--redes-border);
+}
+
+.redes-grid .red-panel:hover {
+    transform: scale(1.05);
+    background-color: var(--redes-panel-hover-bg);
+}
+
+.redes-grid .red-icon {
+    font-size: 1.8em;
+    margin-right: 12px;
+    margin-bottom: 10px;
+    color: var(--redes-icon-color);
+    width: auto;
+    text-align: left;
+}
+
+.redes-grid .red-info {
+    text-align: left;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.redes-grid .red-info h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    color: inherit;
+}
+
+.redes-grid .red-info p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    color: inherit;
+}
+
+.redes-grid .red-link-panel {
+    display: inline-block;
+    color: var(--redes-link-panel-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-size: 0.9em;
+}
+
+.redes-grid .red-link-panel:hover {
+    text-decoration: underline;
+    color: lighten(var(--redes-link-panel-color), 10%);
+}
+
+.redes-grid .red-panel:nth-child(1) .red-link-panel {
+    color: var(--redes-link-panel-color);
+}
+
+.session-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 40px;
+}
+
+.session-button {
+    background-color: var(--session-button-bg);
+    color: var(--session-button-color);
+    border: none;
+    padding: 15px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.session-button:hover {
+    background-color: var(--session-button-hover-bg);
+}
+
+.login-form, .register-form {
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    font-size: 1.8em;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1.1em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 10px;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    font-size: 1.1em;
+}
+
+button[type="submit"] {
+    background-color: var(--button-bg);
+    color: var(--button-color);
+    border: none;
+    padding: 15px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--button-hover-bg);
+}
+
+.switch-form {
+    text-align: center;
+    margin-top: 25px;
+    color: var(--text-color);
+    font-size: 1em;
+}
+
+.switch-form a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.switch-form a:hover {
+    text-decoration: underline;
+    color: var(--button-hover-bg);
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+#theme-button {
+    background: none;
+    border: none;
+    color: var(--theme-icon-color);
+    cursor: pointer;
+    font-size: 1.8em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+#theme-button:hover {
+    opacity: 0.8;
+}
+
+#theme-button .fa-sun {
+    display: block;
+}
+
+#theme-button .fa-moon {
+    display: none;
+}
+
+.dark-theme {
+    --bg-color: #1a1a1a;
+    --text-color: #eee;
+    --input-bg: #333;
+    --input-border: #555;
+    --button-bg: #00aaff;
+    --button-color: #fff;
+    --button-hover-bg: #0088cc;
+    --link-color: #00aaff;
+    --container-bg: #222;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+    --redes-bg: #000;
+    --redes-border: #222;
+    --redes-panel-bg: #111;
+    --redes-panel-hover-bg: #222;
+    --redes-icon-color: #ddd;
+    --redes-link-panel-color: #00ccff;
+    --session-button-bg: #d32f2f;
+    --session-button-color: #eee;
+    --session-button-hover-bg: #b71c1c;
+    --theme-icon-color: #eee;
+}
+
+.dark-theme .redes-grid .red-panel {
+    color: var(--text-color);
+    border: 1px solid var(--redes-border);
+}
+
+.dark-theme .redes-grid .red-info h3,
+.dark-theme .redes-grid .red-info p {
+    color: inherit;
+}
+
+.dark-theme .redes-grid .red-link-panel {
+    color: var(--redes-link-panel-color);
+}
+
+.dark-theme .redes-grid .red-panel:nth-child(1) .red-link-panel {
+    color: var(--redes-link-panel-color);
+}
+
+.dark-theme .profile-info h1,
+.dark-theme .profile-info .description {
+    color: var(--text-color);
+}
+
+.dark-theme #theme-button .fa-sun {
+    display: none;
+}
+
+.dark-theme #theme-button .fa-moon {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 15px auto;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .form-container {
+        max-width: 95%;
+        border-radius: 10px;
+    }
+    .redes-container {
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .redes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+    .redes-grid .red-panel {
+        flex-direction: row;
+        align-items: center;
+        border-radius: 10px;
+        padding: 15px;
+        min-height: auto;
+        border: 1px solid var(--redes-border);
+    }
+    .redes-grid .red-icon {
+        margin-right: 15px;
+        margin-bottom: 0;
+        font-size: 1.5em;
+        width: auto;
+        text-align: left;
+    }
+    .redes-grid .red-info {
+        text-align: left;
+    }
+    .session-buttons {
+        justify-content: center;
+        margin-top: 30px;
+        gap: 10px;
+    }
+    .session-button {
+        border-radius: 10px;
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .redes-grid .red-panel {
+        flex-direction: column;
+        align-items: flex-start;
+        border: 1px solid var(--redes-border);
+    }
+    .redes-grid .red-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
