@@ -9,10 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerPasswordInput = document.getElementById('registerPassword');
     const loginPasswordInput = document.getElementById('loginPassword');
 
-    if (localStorage.getItem('usuarioRegistrado') === 'true') {
-        console.log('Usuario ya registrado.');
-    }
-
     function displayError(inputElement, message) {
         const errorSpan = document.createElement('span');
         errorSpan.textContent = message;
@@ -53,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (!hasError) {
-                console.log('Registro simulado para:', nombre, email);
+                const userData = { email: email, password: password };
+                localStorage.setItem('usuarioRegistradoData', JSON.stringify(userData));
                 localStorage.setItem('usuarioRegistrado', 'true');
                 window.location.href = 'login.html';
             }
@@ -79,19 +76,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (!hasError) {
-                if (localStorage.getItem('usuarioRegistrado') === 'true') {
-                    console.log('Inicio de sesión simulado con:', loginEmail, loginPassword);
-                    window.location.href = 'redes.html';
+                const usuarioRegistradoData = localStorage.getItem('usuarioRegistradoData');
+                if (usuarioRegistradoData) {
+                    const userData = JSON.parse(usuarioRegistradoData);
+                    if (loginEmail === userData.email && loginPassword === userData.password) {
+                        window.location.href = 'redes.html';
+                    } else {
+                        alert('Correo o contraseña incorrectos.');
+                    }
                 } else {
                     alert('Primero debes registrarte.');
                 }
             }
         });
+        
+        if (localStorage.getItem('usuarioRegistrado') === 'true' && localStorage.getItem('usuarioLogueado') === 'true') {
+            window.location.href = 'redes.html';
+        }
     }
 
     if (cerrarSesionBtn) {
         cerrarSesionBtn.addEventListener('click', () => {
-            console.log('Cerrar sesión simulado');
+            localStorage.removeItem('usuarioLogueado');
             window.location.href = 'login.html';
         });
     }
